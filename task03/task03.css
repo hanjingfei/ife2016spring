@@ -8,19 +8,24 @@ body{
 #mypage{
   margin: 20px;
   padding: 20px;
-  height: 800px;
+	width: auto;
+	min-height: 520px;
   background-color: #eee;
-  border-style: 10px solid #999;
+  border-style: solid;
+	border-color: #999;
+	border-width:thin;
 }
 #myteam{
   float: left;
   position: relative;
-  width: 200px;
+  width: 160px;
   height: 80px;
   padding: 20px;
   margin: 0px;
   background-color: #fff;
-  border-style: 10px solid #999;
+	border-style: solid;
+	border-color: #999;
+	border-width:thin;
 }
 #team_logo{
   position: absolute;
@@ -34,24 +39,33 @@ body{
 }
 #team_name{
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 0px;
+  right: 0px;
   width: 60px;
+	height: 80px;
   font-size: 15px;
-  padding: 0px;
+  padding: 20px 20px 20px 0px;
   margin: 0px;
-  background-color: #ddd;
-}
-#team_intr{
-  float: left;
-  padding: 20px;
   background-color: #fff;
 }
 #person_logo{
   float: right;
   width: 120px;
+	height: 520px;
+	background-color: #fff;
+	border-style: solid;
+	border-color: #999;
+	border-width:thin;
 }
 #person_logo img{
   float: right;
-  padding: 20px;
+  padding: 20px 20px 0px 20px;
+}
+#team_intr{
+  padding: 20px 20px 20px 20px;
+	margin: 0px 140px 0px 220px;
+  background-color: #fff;
+	border-style: solid;
+	border-color: #999;
+	border-width:thin;
 }
