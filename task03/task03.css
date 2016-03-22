@@ -1,0 +1,57 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+body{
+	font-family:"Microsoft YaHei","Arial","serif";
+}
+#mypage{
+  margin: 20px;
+  padding: 20px;
+  height: 800px;
+  background-color: #eee;
+  border-style: 10px solid #999;
+}
+#myteam{
+  float: left;
+  position: relative;
+  width: 200px;
+  height: 80px;
+  padding: 20px;
+  margin: 0px;
+  background-color: #fff;
+  border-style: 10px solid #999;
+}
+#team_logo{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 80px;
+  height: 80px;
+  padding: 20px;
+  margin: 0px;
+  background-color: #fff;
+}
+#team_name{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  font-size: 15px;
+  padding: 0px;
+  margin: 0px;
+  background-color: #ddd;
+}
+#team_intr{
+  float: left;
+  padding: 20px;
+  background-color: #fff;
+}
+#person_logo{
+  float: right;
+  width: 120px;
+}
+#person_logo img{
+  float: right;
+  padding: 20px;
+}
