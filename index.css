@@ -1,0 +1,56 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+body{
+  background-color: #D1CFCF;
+	font-family:"Microsoft YaHei","Arial","serif";
+}
+#mypage{
+	position: static;
+	margin: 25px;
+	padding: 30px 25px;
+	background: #fff;
+	box-shadow: 3px 3px 6px #666;
+}
+h1,h4{
+  text-align: center;
+  color: darkgray;
+}
+a{
+	text-decoration: none;
+	color: gray;
+}
+a:hover{
+	text-decoration: none;
+	color: darkgray;
+}
+table{
+	margin: 20px auto 0px auto;
+	padding: 5px 0px;
+	border: 1px solid #CFCFCF;
+	background-color: #fff;
+	border-collapse: collapse;
+	width: 60%;
+}
+.th_name td{
+	background-color: #bbb;
+	font-size: 14px;
+	font-weight:bold;
+	color: #000;
+}
+td,th{
+	border: 1px solid #CFCFCF;
+	padding: 5px;
+	text-align: left;
+}
+th{
+	background-color: #333;
+  font-size:14px;
+  font-weight: bold;
+	color: #fff;
+}
+td{
+	font-size: 12px;
+	font-weight: normal;
+}
