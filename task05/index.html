@@ -22,7 +22,67 @@
       </ul>
     </div>
   </div><!--navbar-->
-  <article>
+  <div class="sidebar">
+  <h2>这里以后是一个侧栏，这是侧栏的标题</h2>
+  <form>
+  <div class="table">
+    <div class="table-row">
+      <div class="table-cell-lable">请输入邮箱地址：</div>
+      <div class="table-cell"><input type="email" placeholder="这是一个文本输入框" /> </div>
+    </div>
+    <div class="table-row">
+      <div></div>
+      <div class="table-cell-warn">邮箱地址请按要求格式输入</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell-lable">请输入密码：</div>
+      <div class="table-cell"><input type="password" placeholder="*********" /></div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell-lable">请重复输入密码：</div>
+      <div class="table-cell"><input type="password" placeholder="*********" /></div>
+    </div>
+    <div class="table-row">
+      <div></div>
+      <div class="table-cell-warn">密码请为6-16位英文数字</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell-lable">性别：</div>
+      <div class="table-cell">
+        <input type="radio" name="sex" value="male" />男
+        <input type="radio" name="sex" value="female" />女
+      </div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell-lable">城市：</div>
+      <div class="table-cell">
+        <select name="city">
+          <option value="beijing">北京</option>
+          <option value="shanghai">上海</option>
+          <option value="guangzhou">广州</option>
+          <option value="shenzhen">深圳</option>
+        </select>
+      </div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell-lable">爱好：</div>
+      <div class="table-cell">
+        <input type="checkbox" name="hobby" vale="sport"/>运动
+        <input type="checkbox" name="hobby" vale="art"/>艺术
+        <input type="checkbox" name="hobby" vale="science"/>科学
+      </div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell-lable">	个人描述：</div>
+      <div class="table-cell">
+        <textarea placeholder="这是一个多行输入框，输入您的个人描述" cols="80" rows="5"></textarea>
+      </div>
+    </div>
+  </div> <!--div table-->
+  <input type="submit" value="确认提交"/>
+  </form>
+  </div> <!--div sidebar-->
+
   <div class="content">
   <h2>文章一级标题</h2>
   <h3>文章二级标题</h3>
@@ -34,7 +94,7 @@
     <br>例如粗体字标签：&lt;b&gt;&lt;/b&gt;非粗体字，<b>粗体字</b>,例如粗体字标签：&lt;b&gt;&lt;/b&gt;,例如粗体字标签：&lt;b&gt;&lt;/b&gt;,例如粗体字标签：&lt;b&gt;&lt;/b&gt;,例如粗体字标签：&lt;b&gt;&lt;/b&gt;,例如粗体字标签：&lt;b&gt;&lt;/b&gt;,例如粗体字标签：&lt;b&gt;&lt;/b&gt;,例如粗体字标签：&lt;b&gt;&lt;/b&gt;
     <br>例如图片标签：&lt;img&gt;
   </p>
-  <img src="../task01/img/Tu-160.jpg" alt="Tu-160"/>
+  <div class="big_pic"><img src="../task01/img/Tu-160.jpg" alt="Tu-160"/></div>
   <p>
     例如标题标签：&lt;h1&gt;&lt;/h1&gt;,例如标题标签：&lt;h1&gt;&lt;/h1&gt;,例如标题标签：&lt;h1&gt;&lt;/h1&gt;,例如标题标签：&lt;h1&gt;&lt;/h1&gt;,例如标题标签：&lt;h1&gt;&lt;/h1&gt;,例如标题标签：&lt;h1&gt;&lt;/h1&gt;,例如标题标签：&lt;h1&gt;&lt;/h1&gt;,例如标题标签：&lt;h1&gt;&lt;/h1&gt;,例如标题标签：&lt;h1&gt;&lt;/h1&gt;
     <br>例如列表标签：&lt;li&gt;&lt;/li&gt;,例如列表标签：&lt;li&gt;&lt;/li&gt;,例如列表标签：&lt;li&gt;&lt;/li&gt;,例如列表标签：&lt;li&gt;&lt;/li&gt;,例如列表标签：&lt;li&gt;&lt;/li&gt;,例如列表标签：&lt;li&gt;&lt;/li&gt;,例如列表标签：&lt;li&gt;&lt;/li&gt;,例如列表标签：&lt;li&gt;&lt;/li&gt;,例如列表标签：&lt;li&gt;&lt;/li&gt;
@@ -55,7 +115,7 @@
     <br>例如粗体字标签：&lt;b&gt;&lt;/b&gt;非粗体字，<b>粗体字</b>,例如粗体字标签：&lt;b&gt;&lt;/b&gt;,例如粗体字标签：&lt;b&gt;&lt;/b&gt;,例如粗体字标签：&lt;b&gt;&lt;/b&gt;,例如粗体字标签：&lt;b&gt;&lt;/b&gt;,例如粗体字标签：&lt;b&gt;&lt;/b&gt;,例如粗体字标签：&lt;b&gt;&lt;/b&gt;,例如粗体字标签：&lt;b&gt;&lt;/b&gt;
     <br>例如图片标签：&lt;img&gt;
   </p>
-  <img src="../task01/img/Tu-160.jpg" alt="Tu-160"/>
+  <div class="big_pic"><img src="../task01/img/Tu-160.jpg" alt="Tu-160"/></div>
   <p>
     <ul>
       <li>列表项目一</li>
@@ -67,6 +127,18 @@
 
   <div class="content_pic">
   <h2>图片</h2>
+    <div class="small_pic">
+    <p>这是Tu-160轰炸机</p>
+    <img src="../task01/img/Tu-160.jpg" alt="Tu-160"/>
+    </div>
+    <div class="small_pic">
+    <p>这是Tu-160轰炸机</p>
+    <img src="../task01/img/Tu-160.jpg" alt="Tu-160"/>
+    </div>
+    <div class="small_pic">
+    <p>这是Tu-160轰炸机</p>
+    <img src="../task01/img/Tu-160.jpg" alt="Tu-160"/>
+    </div>
     <div class="small_pic">
     <p>这是Tu-160轰炸机</p>
     <img src="../task01/img/Tu-160.jpg" alt="Tu-160"/>
@@ -140,66 +212,6 @@
   </table>
   </div>
 
-  <div class="sidebar">
-  <h2>这里以后是一个侧栏，这是侧栏的标题</h2>
-  <form>
-  <div class="table">
-    <div class="table-row">
-      <div class="table-cell-lable">请输入邮箱地址：</div>
-      <div class="table-cell"><input type="email" placeholder="这是一个文本输入框" /> </div>
-    </div>
-    <div class="table-row">
-      <div></div>
-      <div class="table-cell-warn">邮箱地址请按要求格式输入</div>
-    </div>
-    <div class="table-row">
-      <div class="table-cell-lable">请输入密码：</div>
-      <div class="table-cell"><input type="password" placeholder="这是一个文本输入框" /></div>
-    </div>
-    <div class="table-row">
-      <div class="table-cell-lable">请重复输入密码：</div>
-      <div class="table-cell"><input type="password" placeholder="这是一个文本输入框" /></div>
-    </div>
-    <div class="table-row">
-      <div></div>
-      <div class="table-cell-warn">密码请为6-16位英文数字</div>
-    </div>
-    <div class="table-row">
-      <div class="table-cell-lable">性别：</div>
-      <div class="table-cell">
-        <input type="radio" name="sex" value="male" />男
-        <input type="radio" name="sex" value="female" />女
-      </div>
-    </div>
-    <div class="table-row">
-      <div class="table-cell-lable">城市：</div>
-      <div class="table-cell">
-        <select name="city">
-          <option value="beijing">北京</option>
-          <option value="shanghai">上海</option>
-          <option value="guangzhou">广州</option>
-          <option value="shenzhen">深圳</option>
-        </select>
-      </div>
-    </div>
-    <div class="table-row">
-      <div class="table-cell-lable">爱好：</div>
-      <div class="table-cell">
-        <input type="checkbox" name="hobby" vale="sport"/>运动
-        <input type="checkbox" name="hobby" vale="art"/>艺术
-        <input type="checkbox" name="hobby" vale="science"/>科学
-      </div>
-    </div>
-    <div class="table-row">
-      <div class="table-cell-lable">	个人描述：</div>
-      <div class="table-cell">
-        <textarea placeholder="这是一个多行输入框，输入您的个人描述" cols="80" rows="10"></textarea>
-      </div>
-    </div>
-  </div> <!--div table-->
-  <input type="submit" value="确认提交"/>
-  </form>
-  </div> <!--div sidebar-->
   <footer>
     版权所有 &copy 2016 icsoc;
   </footer>

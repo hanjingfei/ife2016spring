@@ -47,8 +47,8 @@ body{
 }
 
 .content{
-	position: static;
-	margin: 25px;
+	clear: left;
+	margin: 20px 410px 20px 20px;
 	padding: 30px 25px;
 	background: #fff;
 	box-shadow: 3px 3px 6px #666;
@@ -85,7 +85,8 @@ body{
 	margin: 10px 0px;
 }
 .content_pic{
-	margin: 25px;
+	float:left;
+	margin: 0px 410px 20px 20px;
 	padding: 30px 25px;
 	background: #fff;
 	box-shadow: 3px 3px 6px #666;
@@ -94,10 +95,15 @@ body{
 	margin: 10px 0;
 	font-size: 21px;
 }
-div.small_pic{
+.big_pic img{
+	width: 250px;
+	margin: 10px 0px 10px 0px;
+}
+.small_pic{
+	float: left;
 	border: 1px solid gray;
-	width: 200px;
-	margin: 20px 40px;
+	width: 120px;
+	margin: 10px 10px 10px 10px;
 	text-align: center;
 }
 .small_pic p{
@@ -146,8 +152,9 @@ td{
 	color: #000;
 }
 .sidebar{
+	float: right;
 	width: 330px;
-	margin: 20px 20px 20px 25px;
+	margin: 20px;
 	padding: 20px;
 	background-color: #fff;
 	box-shadow: 3px 3px 6px #666;
@@ -161,37 +168,34 @@ form{
 	margin-top: 20px;
 	margin-left: auto;
 	margin-right: auto;
-	font-size: 10px;
+	font-size: 12px;
 	border: normal;
 }
 div.table{
 	display: table;
 	margin-left: auto;
 	margin-right: auto;
-	background-color: #bbb;
 }
 div.table-row{
 	display: table-row;
 }
 div.table-row div{
 	display: table-cell;
-	padding: 10px;
+	padding: 10px 10px 5px 10px;
 	vertical-align: top;
 }
 div.table-cell-lable{
 	width: 200px;
-	font-size: 10px;
 	padding: 0px;
 	text-align: right;
 }
 div.table-cell-warn{
-	font-size: 10px;
-	padding: 5px;
 	color: #999;
 	text-align: left;
+	vertical-align: top;
 }
 input[type=password],input[type=email]{
-	height: 10px;
+	height: 12px;
 	width: 150px;
 	color: #000;
 	padding: 5px 20px 5px 5px;
