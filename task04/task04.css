@@ -1,0 +1,61 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+html{
+	height: 100%;
+}
+body{
+	font-family:"Microsoft YaHei","Arial","serif";
+	height: 100%;
+}
+#mypage{
+	position: relative;
+  margin: 20px;
+  padding: 20px;
+	width: auto;
+	min-width: 400px;
+	height: 80%;
+	min-height: 200px;
+  background-color: #fff;
+  border-style: solid;
+	border-color: #999;
+	border-width:thin;
+}
+#rec{
+	position: absolute;
+	width: 400px;
+	height: 200px;
+	top: 50%;
+	left: 50%;
+	margin: -100px 0 0 -200px;
+  background-color: #ccc;
+}
+#cir1{
+	position: absolute;
+	top: -50px;
+	left: -50px;
+	width:0;
+	height:0;
+	border-radius:50px;
+	border-width:50px;
+	border-style:solid;
+	border-color:transparent transparent #fc0 transparent;
+	overflow:hidden;
+	transform: rotate(-45deg);
+	margin: 0px auto;
+}
+#cir2{
+	position: absolute;
+	bottom: -50px;
+	right: -50px;
+	width:0;
+	height:0;
+	border-radius:50px;
+	border-width:50px;
+	border-style:solid;
+	border-color:#fc0 transparent transparent transparent;
+	overflow:hidden;
+	transform: rotate(-45deg);
+	margin: 0px auto;
+}
