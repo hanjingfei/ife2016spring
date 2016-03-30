@@ -96,7 +96,7 @@ function init() {
   document.getElementById("aqi-table").addEventListener("click", function (event) {
     console.log("click on: " +  event.target.nodeName);
     if(event.target.nodeName == "BUTTON") {
-      console.log("call addBtnHandle with id=" + event.target.id);
+      console.log("call delBtnHandle with id=" + event.target.id);
       delBtnHandle(event.target.id);
     }
   });
