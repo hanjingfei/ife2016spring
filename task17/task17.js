@@ -53,6 +53,21 @@ function calUnitWidth(totalWidth, unitNum) {
   return unitWidth;
 }
 
+var MAX_AQI = 500;
+
+function colorData(value) {
+  if(value > (3*MAX_AQI/4)) {
+    color = "#FF0000";
+  } else if (value > (2*MAX_AQI/4)) {
+    color = "#FFFF00";
+  } else if (value > (MAX_AQI/4)) {
+    color = "#0000FF";
+  } else {
+    color = "#00FF00";
+  }
+  return color
+}
+
 //phrase 2016-03-31 and return 1 if the day is Sunday
 //       0123456789
 function isWeekEnd(textDate) {
@@ -149,7 +164,9 @@ function renderChart() {
     //console.log(cityChartData[index] + " @ " + index);
     textHTML += "; bottom: 0px; left: ";
     textHTML += posLeft;
-    textHTML += "px; background-color: #888;' title = \""
+    textHTML += "px; background-color: "
+    textHTML += colorData(cityChartData[index]);
+    textHTML += ";' title = \""
     textHTML += (textCity + index2Hanzi(pageState.nowGraTime, index) + "空气质量： " + cityChartData[index]);
     textHTML += "\"></div>";
     posLeft += unitWidth;
