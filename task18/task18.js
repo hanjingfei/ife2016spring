@@ -64,8 +64,10 @@ function initButtonEvent() {
     rightOutBtnHandle();
   });
   queueBox.addEventListener("click", function (event) {
-    console.log("call delBoxHandle: " + event.target.id);
-    delBoxHandle(event.target.id);
+    if(event.target.id.match(/^[0-9]+$/)) {
+      console.log("call delBoxHandle: " + event.target.id);
+      delBoxHandle(event.target.id);
+    }
   });
 }
 
@@ -86,22 +88,11 @@ function renderQueue() {
   numIput.select();
 }
 
-function initQueueBoxEvent() {
-  document.getElementById("queue-box").addEventListener("click", function (event) {
-    console.log("click on: " +  event.target.nodeName);
-    if(event.target.nodeName == "NUM-BOX") {
-      console.log("call delBoxHandle with id=" + event.target.id);
-      delBoxHandle(event.target.id);
-    }
-  });
-}
 /**
  * 初始化函数
  */
 function init() {
   initButtonEvent();
-  initQueueBoxEvent();
-  //renderQueue();
 }
 
 init();
