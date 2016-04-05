@@ -5,8 +5,9 @@ var queueBox = document.getElementById("queue-box");
 var dataBox = document.getElementById("data-box");
 var queueGraph = document.getElementById("queue-graph");
 var numInput = document.getElementById("num-input");
-var max_array_length = 10;
+var max_array_length = 60;
 var count = 0;
+var reEntry = 0;
 
 function leftInQueue(data) {
   var tmp = new Array();
@@ -103,19 +104,22 @@ function randGenBtnHandle() {
 }
 
 function insertSortBtnHandle() {
+  if (reEntry) {
+    return;
+  }
+  reEntry = 1;
   var t;
   var i = 0;
-  tmpQueue = numQueue;
-  oriQueue = [];
-  oriQueue = numQueue;
+  tmpQueue = numQueue.slice(0);
+  oriQueue = numQueue.slice(0);
 
   numQueue = [];
   numQueue[i] = tmpQueue[i];
   console.log("insertOne: " + tmpQueue[i] + "; Times: " + i);
   oriQueue.shift();
   i++;
+  renderQueue();
   insertSortBtnHandle.insertOne = function() {
-    renderQueue();
     for (var j = 0; j < i;j++) {
       if ((numQueue.length == 1) || (j == (numQueue.length - 1))) {
       //corner elements
@@ -141,9 +145,12 @@ function insertSortBtnHandle() {
     if (i >= (tmpQueue.length)) {
       clearInterval(t);
       renderQueue();
+      reEntry = 0;
+    } else {
+      renderQueue();
     }
   } //insertOne
-  t = setInterval("insertSortBtnHandle.insertOne()",500);
+  t = setInterval("insertSortBtnHandle.insertOne()",1000);
 }
 
 function initButtonEvent() {
