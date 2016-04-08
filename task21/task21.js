@@ -4,9 +4,9 @@ var tagBox = document.getElementById("tag-box");
 var queueBox = document.getElementById("queue-box");
 var tagInput = document.getElementById("tag-input");
 var textInput = document.getElementById("text-input");
-var colorFlag = 0;
 var textNumMax = 10;
 var tagNumMax = 10;
+var chineseIMEflag = 0;
 
 function text2array(text) {
   var strArray = text.split(/[^0-9a-zA-Z\u4E00-\u9FA5]+/);
@@ -60,8 +60,8 @@ function delTagBoxHandle(id) {
 }
 function tagInputChangeHandle(event) {
   var left_in_word = "";
-  var re_pat = new RegExp("[^_0-9a-zA-Z\u4E00-\u9FA5]+");
-  if((event.keyCode == 13) || re_pat.test(tagInput.value)) {
+  var re_pat = new RegExp("[^0-9a-zA-Z\u4E00-\u9FA5]+");
+  if((event.keyCode == 13) || re_pat.test(tagInput.value) && !chineseIMEflag) {
     left_in_word = tagInput.value.replace(re_pat, "");
     if(left_in_word.trim() != "") {
       tagQueue.unshift(left_in_word.trim());
@@ -79,8 +79,7 @@ function colorTagBoxHandle(id) {
   tagBox.childNodes[id].innerHTML = "点击删除" + tagQueue[id];
 }
 function colorRemoveTagBoxHandle(id) {
-  colorFlag = 0;
-  console.log("colorRemoveTagBoxHandle: clear colorFlag");
+  console.log("colorRemoveTagBoxHandle");
   renderTag();
 }
 function initButtonEvent() {
@@ -91,7 +90,13 @@ function initButtonEvent() {
     }
   });
   tagInput.addEventListener("keyup", function (event) {
+    console.log("keyup: tagInput.value=" + tagInput.value + "; keycode=" + event.keyCode);
     tagInputChangeHandle(event);
+  });
+  tagInput.addEventListener("keydown", function (event) {
+    console.log("keydown: tagInput.value=" + tagInput.value + "; keycode=" + event.keyCode);
+    chineseIMEflag = (event.keyCode == 229);//only for chrome
+    // http://www.jianshu.com/p/efe1924adca9
   });
   tagBox.addEventListener("mouseover", function (event) {
     if(event.target.id.match(/^[0-9]+$/)) {
@@ -146,7 +151,7 @@ function renderTag() {
   }
   console.log("tagQueue is " + outStr);
   tagBox.innerHTML = textHTML;
-  tagInput.value = " ";
+  tagInput.value = "";
   tagInput.focus();
   tagInput.select();
 }
