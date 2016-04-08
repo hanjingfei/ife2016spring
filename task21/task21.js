@@ -1,5 +1,4 @@
 var textQueue = new Array();
-var colorQueue = new Array();
 var tagQueue = new Array();
 var tagBox = document.getElementById("tag-box");
 var queueBox = document.getElementById("queue-box");
@@ -51,12 +50,19 @@ function delBoxHandle(id) {
     renderQueue();
   }
 }
+function delTagBoxHandle(id) {
+  if(tagQueue.length > 0) {
+    var delData = tagQueue[id];
+    console.log("delTagData = " + delData);
+    tagQueue.splice(id, 1);
+    renderTag();
+  }
+}
 function tagInputChangeHandle(event) {
   var left_in_word = "";
-  var re_pat = new RegExp("[^0-9a-zA-Z\u4E00-\u9FA5]+");
+  var re_pat = new RegExp("[^_0-9a-zA-Z\u4E00-\u9FA5]+");
   if((event.keyCode == 13) || re_pat.test(tagInput.value)) {
     left_in_word = tagInput.value.replace(re_pat, "");
-    tagInput.value = "";
     if(left_in_word.trim() != "") {
       tagQueue.unshift(left_in_word.trim());
       console.log("left_in_word: " + left_in_word);
@@ -69,14 +75,14 @@ function tagInputChangeHandle(event) {
   }
 }
 function colorTagBoxHandle(id) {
-  colorFlag = 1;
-  colorQueue = tagQueue.slice(0);
-  pat_str_new = "<span style = 'background-color: #FF0000'>点击删除" + tagQueue[id] + "</span>";
-  colorQueue[id] = pat_str_new;
-  console.log("colorQueue[] is " + colorQueue[id]);
+  tagBox.childNodes[id].style.background = "#FF0000";
+  tagBox.childNodes[id].innerHTML = "点击删除" + tagQueue[id];
+}
+function colorRemoveTagBoxHandle(id) {
+  colorFlag = 0;
+  console.log("colorRemoveTagBoxHandle: clear colorFlag");
   renderTag();
 }
-
 function initButtonEvent() {
   queueBox.addEventListener("click", function (event) {
     if(event.target.id.match(/^[0-9]+$/)) {
@@ -89,8 +95,20 @@ function initButtonEvent() {
   });
   tagBox.addEventListener("mouseover", function (event) {
     if(event.target.id.match(/^[0-9]+$/)) {
-      console.log("call delBoxHandle: " + event.target.id);
+      console.log("call colorTagBoxHandle: " + event.target.id);
       colorTagBoxHandle(event.target.id);
+    }
+  });
+  tagBox.addEventListener("mouseout", function (event) {
+    if(event.target.id.match(/^[0-9]+$/)) {
+      console.log("call colorRemoveTagBoxHandle: " + event.target.id);
+      colorRemoveTagBoxHandle(event.target.id);
+    }
+  });
+  tagBox.addEventListener("click", function (event) {
+    if(event.target.id.match(/^[0-9]+$/)) {
+      console.log("call delTagBoxHandle: " + event.target.id);
+      delTagBoxHandle(event.target.id);
     }
   });
   document.getElementById("ok-btn").addEventListener("click", function () {
@@ -119,18 +137,18 @@ function renderTag() {
   var outStr = "";
   var textHTML = "";
   for (var i = 0; i < tagQueue.length; i++) {
-    outStr += (textQueue[i] + " ");
+    outStr += (tagQueue[i] + " ");
     textHTML += "<div id='";
     textHTML += i;
     textHTML += "' style = 'display: inline-block; margin: 10px; height: 30px; font-size: 30px; line-height: 30px; color: #ffffff; text-align:center; background-color: #0000ff'>";
-    textHTML += colorFlag ? colorQueue[i] : tagQueue[i];
+    textHTML += tagQueue[i];
     textHTML += "</div>";
   }
   console.log("tagQueue is " + outStr);
   tagBox.innerHTML = textHTML;
+  tagInput.value = " ";
   tagInput.focus();
   tagInput.select();
-  colorFlag = 0;
 }
 
 /**
