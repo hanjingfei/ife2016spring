@@ -1,0 +1,42 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+body{
+  padding: 20px;
+  margin: 20px;
+	background-color: #ffffff;
+	font-family:"Microsoft YaHei","Arial","serif";
+}
+.flex-container{
+  display: flex;
+  padding: 20px;
+  box-sizing: border-box;
+  justify-content: flex-start;
+  background-color: #ccc;
+}
+.flex-item{
+  padding: 0px;
+  width: 150px;
+  margin: auto;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ff0000;
+}
+#box-1{
+  height: 120px;
+  order: 2;
+}
+#box-2{
+  height: 100px;
+  order: 3;
+}
+#box-3{
+  height: 40px;
+  order: 4;
+}
+#box-4{
+  height:200px;
+  border-color: #0000ff;
+  order: 5;
+}
