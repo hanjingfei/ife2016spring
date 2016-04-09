@@ -1,0 +1,41 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+body{
+	background-color: #ffffff;
+	font-family:"Microsoft YaHei","Arial","serif";
+}
+.root{
+	width: 900px;
+	height: 300px;
+}
+.root, .child-1, .child-2, .child-3{
+	margin: 20px;
+	box-sizing: border-box;
+  display: flex;
+	flex-flow: row;
+	flex-wrap: nowrap;
+  justify-content: center;
+	align-items: center;
+	border-style: solid;
+  border-width: 1px;
+  border-color: #000000;
+}
+.child-1{
+	height: 260px;
+}
+.root div:nth-of-type(1) {flex-grow: 1;}
+.root div:nth-of-type(2) {flex-grow: 1;}
+
+.child-2{
+	height: 220px;
+}
+.child-1 div:nth-of-type(1) {flex-grow: 1;}
+.child-1 div:nth-of-type(2) {flex-grow: 1;}
+
+.child-3{
+	height: 180px;
+}
+.child-2 div:nth-of-type(1) {flex-grow: 1;}
+.child-2 div:nth-of-type(2) {flex-grow: 1;}
