@@ -9,12 +9,26 @@ var colorFlash = "#aaa";
 var colorNormal = "#fff";
 
 function preOrder(box) {
-  boxQueue.push(box);
-  if(box.firstElementChild) {
+  if(box) {
+    boxQueue.push(box);
     preOrder(box.firstElementChild);
-  }
-  if(box.lastElementChild) {
     preOrder(box.lastElementChild);
+  }
+}
+
+function inOrder(box) {
+  if(box) {
+    inOrder(box.firstElementChild);
+    boxQueue.push(box);
+    inOrder(box.lastElementChild);
+  }
+}
+
+function postOrder(box) {
+  if(box) {
+    postOrder(box.firstElementChild);
+    postOrder(box.lastElementChild);
+    boxQueue.push(box);
   }
 }
 
@@ -43,6 +57,30 @@ function initButtonEvent() {
     busyFlag = 1;
     boxQueue = [];
     preOrder(rootBox);
+    renderBox();
+    busyFlag = 0;
+  });
+  inOrderBtn.addEventListener("click", function (event) {
+    console.log("button click: " + event.target.id);
+    if(busyFlag) {
+      console.log("busy !");
+      return;
+    }
+    busyFlag = 1;
+    boxQueue = [];
+    inOrder(rootBox);
+    renderBox();
+    busyFlag = 0;
+  });
+  postOrderBtn.addEventListener("click", function (event) {
+    console.log("button click: " + event.target.id);
+    if(busyFlag) {
+      console.log("busy !");
+      return;
+    }
+    busyFlag = 1;
+    boxQueue = [];
+    postOrder(rootBox);
     renderBox();
     busyFlag = 0;
   });
