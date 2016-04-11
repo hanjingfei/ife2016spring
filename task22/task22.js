@@ -42,6 +42,7 @@ function renderBox() {
     } else if(i == (boxQueue.length -1)) {
       boxQueue[i].style.background = colorNormal;
       clearInterval(t);
+      busyFlag = 0;
     }
     i++;
   }, 500);
@@ -52,37 +53,34 @@ function initButtonEvent() {
     console.log("button click: " + event.target.id);
     if(busyFlag) {
       console.log("busy !");
-      return;
+    } else {
+      busyFlag = 1;
+      boxQueue = [];
+      preOrder(rootBox);
+      renderBox();
     }
-    busyFlag = 1;
-    boxQueue = [];
-    preOrder(rootBox);
-    renderBox();
-    busyFlag = 0;
   });
   inOrderBtn.addEventListener("click", function (event) {
     console.log("button click: " + event.target.id);
     if(busyFlag) {
       console.log("busy !");
-      return;
+    } else {
+      busyFlag = 1;
+      boxQueue = [];
+      inOrder(rootBox);
+      renderBox();
     }
-    busyFlag = 1;
-    boxQueue = [];
-    inOrder(rootBox);
-    renderBox();
-    busyFlag = 0;
   });
   postOrderBtn.addEventListener("click", function (event) {
     console.log("button click: " + event.target.id);
     if(busyFlag) {
       console.log("busy !");
-      return;
+    } else {
+      busyFlag = 1;
+      boxQueue = [];
+      postOrder(rootBox);
+      renderBox();
     }
-    busyFlag = 1;
-    boxQueue = [];
-    postOrder(rootBox);
-    renderBox();
-    busyFlag = 0;
   });
 }
 
