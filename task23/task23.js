@@ -7,6 +7,7 @@ var rootBox = document.getElementById("root-box");
 
 var boxQueue = new Array();
 var matchQueue = new Array();
+var colorQueue = new Array();
 var stackQueue = new Array();
 var busyFlag = 0;
 var foundFlag = 0;
@@ -18,9 +19,11 @@ function depthFirst(box, pat) {
   if(box) {
     boxQueue.push(box);
     var tmp = box.childNodes[0].textContent.trim();
+    console.log(tmp);
     matchQueue.push(tmp == pat);
     if(tmp == pat) {
       foundFlag = 1;
+      colorQueue.push(box);
     }
     var child = box.firstElementChild;
     depthFirst(child, pat);
@@ -38,10 +41,11 @@ function breadthFirst(box, pat) {
   while(stackQueue.length > 0) {
     var root = stackQueue.shift();
     boxQueue.push(root);
-    var tmp = box.childNodes[0].textContent.trim();
+    var tmp = root.childNodes[0].textContent.trim();
     matchQueue.push(tmp == pat);
     if(tmp == pat) {
       foundFlag = 1;
+      colorQueue.push(root);
     }
     var child = root.firstElementChild;
     if(child) {
@@ -53,29 +57,38 @@ function breadthFirst(box, pat) {
     }
   }
 }
+function clearRender() {
+  //clear last query results firstly
+  for (var j = 0; j < colorQueue.length; j++) {
+    colorQueue[j].style.background = colorNormal;
+  }
+  colorQueue = [];
+}
 
-function renderBox() {
+function renderBox(time_i, disColor) {
   var i = 0;
   boxQueue[i].style.background = colorFlash;
   var t = setInterval(function() {
     if(i < (boxQueue.length - 1)) {
-      if(!matchQueue[i]) {
+      if(!matchQueue[i] || disColor) {
         boxQueue[i].style.background = colorNormal;
       }
       boxQueue[i+1].style.background = colorFlash;
     } else if(i == (boxQueue.length -1)) {
-      if(!matchQueue[i]) {
+      if(!matchQueue[i] || disColor) {
         boxQueue[i].style.background = colorNormal;
       }
       clearInterval(t);
       busyFlag = 0;
-      if(!foundFlag && (str_pat != "")) {
-        alert("Pattern: " + str_pat + " Not found !");
+      if(!foundFlag && (str_pat != "") && (!disColor)) {
+        alert("Pattern: [" + str_pat + "] Not found !");
       }
       foundFlag = 0;
+      queryText.focus();
+      queryText.select();
     }
     i++;
-  }, 500);
+  }, time_i);
 }
 
 function initButtonEvent() {
@@ -87,8 +100,9 @@ function initButtonEvent() {
       busyFlag = 1;
       boxQueue = [];
       matchQueue = [];
+      clearRender();
       depthFirst(rootBox, "");
-      renderBox();
+      renderBox(500, true);
     }
   });
   breadthTravBtn.addEventListener("click", function (event) {
@@ -99,8 +113,9 @@ function initButtonEvent() {
       busyFlag = 1;
       boxQueue = [];
       matchQueue = [];
+      clearRender();
       breadthFirst(rootBox, "");
-      renderBox();
+      renderBox(500, true);
     }
   });
   depthQueryBtn.addEventListener("click", function (event) {
@@ -112,8 +127,9 @@ function initButtonEvent() {
       busyFlag = 1;
       boxQueue = [];
       matchQueue = [];
+      clearRender();
       depthFirst(rootBox, str_pat);
-      renderBox();
+      renderBox(500);
     }
   });
   breadthQueryBtn.addEventListener("click", function (event) {
@@ -125,14 +141,17 @@ function initButtonEvent() {
       busyFlag = 1;
       boxQueue = [];
       matchQueue = [];
+      clearRender();
       breadthFirst(rootBox, str_pat);
-      renderBox();
+      renderBox(500);
     }
   });
 }
 
 function init() {
   initButtonEvent();
+  busyFlag = 0;
+  foundFlag = 0;
 }
 
 init();
