@@ -93,6 +93,27 @@ function renderBox(time_i, disColor) {
   }, time_i);
 }
 
+function addBox(box, text) {
+  var newBox = document.createElement('div');
+  newBox.innerHTML = text;
+  if(box == containerDiv) {
+    //root
+    if(containerDiv.childElementCount == 0) {
+      //no root
+      newBox.className = "root";
+    } else {
+      alert("根节点只能有一个！");
+    }
+  } else {
+    //child
+    newBox.className = "child";
+  }
+  box.appendChild(newBox);
+}
+
+function initTree() {
+}
+
 function initButtonEvent() {
   delBoxBtn.onclick = function() {
     for (var j = 0; j < colorQueue.length; j++) {
@@ -158,6 +179,7 @@ function init() {
   initButtonEvent();
   busyFlag = 0;
   foundFlag = 0;
+  initTree();
   breadthFirst(rootBox, ""); //build tree
 }
 
