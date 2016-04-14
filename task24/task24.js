@@ -120,13 +120,13 @@ function initButtonEvent() {
             alert("根节点只能有一个！");
           } else {
             newBox.className = "root";
-            newBox.style.height = 300;
+            //newBox.style.height = 300;
             selectedBox.appendChild(newBox);
           }
         } else {
           //child elements
-          newBox.className = "child-new";
-          newBox.style.height = selectedBox.clientHeight - 40;
+          newBox.className = "child";
+          //newBox.style.height = selectedBox.clientHeight - 40;
           selectedBox.appendChild(newBox);
         }
       } else {
