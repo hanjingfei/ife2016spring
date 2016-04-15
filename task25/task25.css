@@ -6,7 +6,7 @@ body{
 	background-color: #ffffff;
 	font-family:"Microsoft YaHei","Arial","serif";
 }
-#container{
+.container{
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
@@ -14,8 +14,11 @@ body{
 	margin: 20px;
 	min-height: 300;
 	width: auto;
+	background-color: #fff;
 }
-
+.tip-root{
+	background-color: #eee;
+}
 .box{
 	margin: 5px 20px;
 	box-sizing: border-box;
@@ -40,6 +43,7 @@ body{
 	text-align: center;
 }
 .add, .del{
+	display: none;
 	margin-left: 30px;
 	font-size: 10px;
 	color: red;
@@ -51,9 +55,19 @@ body{
 	color: blue;
 	cursor: pointer;
 }
-
-#button-list, #add-box{
+.add:hover, .del:hover{
+	font-weight: bolder;
+	cursor: pointer;
+}
+.header:hover>.add, .header:hover>.del{
+	display: inline-block;
+}
+.hilight{
+	color: red;
+}
+#query{
 	margin: 20px;
+	width: 400px;
 	box-sizing: border-box;
   display: flex;
 	flex-direction: row;
@@ -61,30 +75,6 @@ body{
   justify-content: space-around;
 	align-items: center;
 }
-#button-list button:nth-of-type(1) {flex-grow: 1; margin: 20px; height: 50px;}
 
-#add-box input:nth-of-type(1) {flex-grow: 1; margin: 20px; height: 50px;}
-#add-box button:nth-of-type(1) {flex-grow: 1; margin: 20px; height: 50px;}
-
-p{
-	font-size: 10px;
-}
-
-/*fold*/
-.arrow-up{
-	width:0;
-	height:0;
-	border-left:6px solid transparent;
-	border-right:6px solid transparent;
-	border-bottom:10px solid #10456b;
-	background-color: #eeedd6;
-}
-/*unfold*/
-.arrow-right{
-	width:0;
-	height:0;
-	border-top :6px solid transparent;
-	border-bottom: 6px solid transparent;
-	border-left: 10px solid #10456b;
-	background-color: #eeedd6;
-}
+#query input:nth-of-type(1) {flex-grow: 1; margin: 20px; height: 20px;}
+#query button:nth-of-type(1) {flex-grow: 1; margin: 20px; height: 20px;}
