@@ -22,13 +22,13 @@ function TreeBox(box) {
 TreeBox.prototype = {
   constructor: TreeBox,
   render: function(folded) {
-    if((this.dom == containerDiv) && (this.childs.length == 0)) {
+    if((this.dom == containerDiv) && this.isLeaf()) {
       this.dom.className = "container tip-root";
       this.dom.innerHTML = "请单击灰色区域添加根节点！";
       return;
-    } else if(this.childs.length == 0) {
+    } else if(this.isLeaf()) {
       this.dom.getElementsByClassName("header")[0].getElementsByClassName("fold-sym")[0].innerHTML = " ";
-    } else {
+    } else if(this.dom != containerDiv) {
       this.dom.getElementsByClassName("header")[0].getElementsByClassName("fold-sym")[0].innerHTML = folded ? "+" : "-";
       for (var i = 0; i < this.childs.length; i++) {
         if(this.parent != null) {
@@ -102,6 +102,13 @@ TreeBox.prototype = {
     } //while
     return boxQueue;
   },
+  isLeaf: function() {
+    if(this.childs.length == 0) {
+      return true;
+    } else {
+      return false;
+    }
+  },
   isFold: function() {
     if(this.dom.getElementsByClassName("header")[0].getElementsByClassName("fold-sym")[0].innerHTML == "+") {
       return folded;
@@ -110,6 +117,9 @@ TreeBox.prototype = {
     }
   },
   toggleFold: function() {
+    if(this.isLeaf()) {
+      return;
+    }
     if(this.isFold() == folded) {
       this.render(unfold);
     } else {
@@ -132,7 +142,7 @@ function initTree() {
 
 function initButtonEvent() {
   containerDiv.onclick = function(event) {
-    if((event.target == containerDiv) && (event.target.TreeBox.childs.length == 0)) {
+    if((event.target == containerDiv) && (event.target.TreeBox.isLeaf())) {
       var str = prompt("请输入根节点名字：");
       if((str != null) && (str.trim() != "")) {
         containerDiv.innerHTML = "";
@@ -169,7 +179,7 @@ function initButtonEvent() {
     //clear hilight
     if(matchBox) {
       for (var i = 0; i < matchBox.length; i++) {
-        matchBox[i].dom.className = "box";
+        matchBox[i].dom.getElementsByClassName("data")[0].className = "data";
       }
     }
     var value = queryText.value.trim();
@@ -185,8 +195,13 @@ function initButtonEvent() {
         return;
       } //if
       for (var j = 0; j < matchBox.length; j++) {
-        console.log(matchBox[i].data);
-        matchBox[i].dom.className = "box hilight";
+        console.log(matchBox[j].data);
+        matchBox[j].dom.getElementsByClassName("data")[0].className = "data hilight";
+        var boxParent = matchBox[j].parent;
+        while(boxParent != null) {
+          boxParent.render(unfold);
+          boxParent = boxParent.parent;
+        }//unfold all parents of the matched child
       }
     } //if else
   } //on click
